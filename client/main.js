@@ -11,6 +11,8 @@ import Login from './../imports/ui/Login';
 
 //Client-side routing using React-Router (react-router-dom v4)
 const browserHistory = createBrowserHistory();
+
+
 const routes = (
     <Router history={browserHistory}>
         <Switch>
