@@ -2,7 +2,7 @@ import {Meteor} from 'meteor/meteor';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import createBrowserHistory from 'history/createBrowserHistory'
-import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
+import {Router, Switch, Route, Redirect} from 'react-router-dom';
 import {Tracker} from 'meteor/tracker';
 
 import Signup from './../imports/ui/Signup';
@@ -25,7 +25,7 @@ const routes = (
                 return Meteor.userId() ? <Redirect to="/links" /> : <Signup />
             }} />
             <Route path="/links" render={() => {
-                return Meteor.userId() ? <Link /> : <Redirect to="/"/>
+                return Meteor.userId() ? <Link to="/links" /> : <Redirect to="/"/>
             }} />
             <Route path="*" component={NotFound} />
         </Switch>
