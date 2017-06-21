@@ -2,6 +2,7 @@
  * Created by Daniel on 18/06/2017.
  */
 import React from 'react';
+import {Accounts} from 'meteor/accounts-base';
 
 export default class Link extends React.Component{
     constructor(props) {
@@ -11,9 +12,8 @@ export default class Link extends React.Component{
         this.onLogout = this.onLogout.bind(this);
     }
 
-    //Redirects the user to the login page
     onLogout() {
-        return this.props.history.push('/');
+        Accounts.logout();
     }
 
 
