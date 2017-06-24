@@ -6,6 +6,8 @@ import {Link} from 'react-router-dom';
 import {Accounts} from 'meteor/accounts-base';
 
 export default class Signup extends React.Component {
+    minPasswordLength = 7;
+
     constructor(props) {
         super(props);
         this.state = {  //Component state
@@ -18,6 +20,10 @@ export default class Signup extends React.Component {
 
         let email = this.refs.email.value.trim();
         let password = this.refs.password.value.trim();
+
+        if(password.length < this.minPasswordLength) {
+            return this.setState({error: `Password must be more than ${this.minPasswordLength - 1} characters long.`});
+        }
 
         Accounts.createUser({email, password}, (err) => {
             if(err){
@@ -35,7 +41,7 @@ export default class Signup extends React.Component {
 
                 {this.state.error ? <p>{this.state.error}</p> : undefined}
 
-                <form onSubmit={this.onSubmit.bind(this)}>
+                <form onSubmit={this.onSubmit.bind(this)} noValidate>
                     <input type="email" ref="email" name="email" placeholder="e-mail"/>
                     <input type="password" ref="password" name="password" placeholder="password"/>
                     <button>Create Account</button>
