@@ -4,7 +4,6 @@
 import {Meteor} from 'meteor/meteor';
 import React from 'react';
 import {Accounts} from 'meteor/accounts-base';
-import {Links} from '../api/links';
 import LinksList from './LinksList';
 
 export default class Link extends React.Component{

@@ -3,6 +3,7 @@
  */
 import {Meteor} from 'meteor/meteor';
 import {Mongo} from 'meteor/mongo';
+import SimpleSchema from 'simpl-schema';
 
 export const Links = new Mongo.Collection('links');
 
@@ -17,8 +18,22 @@ if(Meteor.isServer) {
 
 Meteor.methods({
     'links.insert'(url) {
+        //User validation
         if(!this.userId) {
             throw new Meteor.error('not-authorised');
+        }
+
+        //URL validation
+        try {
+            new SimpleSchema({
+                url: {
+                    type: String,
+                    label: 'Your link',
+                    regEx: SimpleSchema.RegEx.Url
+                }
+            }).validate({url});
+        } catch (e) {
+            throw new Meteor.Error(400, e.message);
         }
 
         Links.insert({
