@@ -5,7 +5,6 @@ import {Tracker} from 'meteor/tracker';
 
 import {routes, onAuthChange} from '../imports/routes/routes';
 
-
 Tracker.autorun(() => {
     //Keep track of authentication status
     const isAuthenticated = !!Meteor.userId();
