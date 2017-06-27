@@ -8,19 +8,25 @@ import Clipboard from 'clipboard';
 export default class LinksListItem extends React.Component {
     constructor(props){
         super(props);
+        this.state = {
+            justCopied: false
+        };
     }
 
     componentDidMount(){
         this.clipboard = new Clipboard(this.refs.copyButton);
 
         this.clipboard.on('success', () => {
-            //TODO Give success feedback
+            this.setState({justCopied: true});
+            setTimeout(() => {
+                this.setState({justCopied: false});
+            }, 1000);
         }).on('error', () => {
             //TODO Give error feedback
         });
     }
 
-    componentWillMount(){
+    componentWillUnmount(){
         this.clipboard.destroy();
     }
 
@@ -29,7 +35,9 @@ export default class LinksListItem extends React.Component {
             <div>
                 <p>{this.props.url}</p>
                 <p>{this.props.shortUrl}</p>
-                <button ref="copyButton" data-clipboard-text={this.props.shortUrl}>Copy</button>
+                <button ref="copyButton" data-clipboard-text={this.props.shortUrl}>
+                    {this.state.justCopied ? 'Copied' : 'Copy'}
+                </button>
             </div>
         );
     }
