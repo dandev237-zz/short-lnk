@@ -21,7 +21,7 @@ Meteor.methods({
     'links.insert'(url) {
         //User validation
         if(!this.userId) {
-            throw new Meteor.error('not-authorised');
+            throw new Meteor.error('not-authorized');
         }
 
         //URL validation
@@ -40,7 +40,30 @@ Meteor.methods({
         Links.insert({
             _id: shortId.generate(),
             url,
-            userId: this.userId
+            userId: this.userId,
+            visible: true
         });
+    },
+
+    'links.setVisibility'(_id, visible) {
+        if(!this.userId) {
+            throw new Meteor.error('not-authorized');
+        }
+
+        try {
+            new SimpleSchema({
+                _id: {
+                    type: String,
+                    min: 1
+                },
+                visible: {
+                    type: Boolean
+                }
+            }).validate({_id, visible});
+        } catch (e) {
+            throw new Meteor.Error(400, e.message);
+        }
+
+        Links.update({_id, userId: this.userId}, {$set: {visible}});
     }
 });
