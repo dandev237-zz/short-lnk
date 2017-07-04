@@ -4,6 +4,10 @@
 import React from 'react';
 
 export default class AddLink extends React.Component {
+
+    //link analytics
+
+
     constructor(props) {
         super(props);
         this.state = {
