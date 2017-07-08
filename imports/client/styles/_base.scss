@@ -1,0 +1,8 @@
+html {
+  font-size: 62.5%; //16 * .625 = 10  (for rem units)
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: $base-font-size;
+}
