@@ -1,6 +1,21 @@
+//Colors
+$grey: #dddddd;
+
+//Spacing
+$space: 1.4rem;
+
 //Font variables
-$base-font-size: 1.6rem;
+$base-font-size: 1.4rem;
+
+//Form inputs
+$input-border-color: $grey;
+$input-spacing: 1rem;
 
 //Boxed view variables
-$boxed-view-bg-color: #dddddd;
+$boxed-view-bg-color: $grey;
 $boxed-view-box-color: white;
+
+// Buttons
+$button-bg-color: #5b4681;
+$button-text-color: white;
+$button-pill-color: #5b4681;
