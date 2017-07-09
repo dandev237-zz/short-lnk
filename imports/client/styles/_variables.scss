@@ -1,8 +1,10 @@
 //Colors
 $grey: #dddddd;
+$brand-primary: #5b4681;
 
 //Spacing
 $space: 1.4rem;
+$site-max-width: 50rem;
 
 //Font variables
 $base-font-size: 1.4rem;
@@ -15,7 +17,14 @@ $input-spacing: 1rem;
 $boxed-view-bg-color: $grey;
 $boxed-view-box-color: white;
 
-// Buttons
-$button-bg-color: #5b4681;
+//Buttons
+$button-bg-color: $brand-primary;
 $button-text-color: white;
-$button-pill-color: #5b4681;
+$button-pill-color: $brand-primary;
+$button-secondary-bg: #f9f9f9;
+$button-secondary-text-color: #777777;
+$button-secondary-border-color: $grey;
+
+//Header
+$header-bg-color: $brand-primary;
+$header-text-color: white;
