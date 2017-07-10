@@ -8,7 +8,7 @@
 }
 
 .boxed-view--modal {
-  background: fade-out ($boxed-view-bg-color, 0.3);
+  background: fade-out($boxed-view-bg-color, .3);
   position: fixed;
   top: 0;
   left: 0;
